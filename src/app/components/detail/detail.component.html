@@ -1,0 +1,34 @@
+<section class="">
+    <div class="container px-4 px-lg-5 ">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6">
+          <img src="{{product.image}}" alt="..." class="card-img-top mb-5 mb-md-0">
+        </div>
+        <div class="col-md-6" >
+        
+          <h1 class="display-5 fw-bolder">{{product.name}}</h1>
+          <p class="fs-5 mb-5">
+            <span >${{product.price}}</span>
+          </p>
+          <p class="lead">{{product.description}}</p>
+          <p class="lead-small">Stock disponible {{product.stock}}</p>
+          <form [formGroup]="productForm">
+            <div class="d-flex">
+              <input type="number" id="inputQuantity" class="form-control text-center me-3" value="1" style="max-width: 4rem"
+                formControlName="quantity"  [ngClass]="{ 'is-invalid': quantity?.invalid && quantity?.touched }"
+              >
+              <button type="button" class="btn btn-outline-dark flex-shrink-0" (click)="addToCart()">
+                <i class="bi-cart-fill me-1"></i>
+                |  Añadir al carrito
+              </button>
+            </div>
+            <div *ngIf="quantity?.touched && quantity?.hasError" class="danger text-danger">
+                <span *ngIf="quantity?.getError('required')">Ingrese la cantidad</span>
+                <span *ngIf="quantity?.getError('min')">Minimo 1 producto</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  

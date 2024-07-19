@@ -1,0 +1,18 @@
+<div class="container mt-3">
+    <div class="row">
+       <ng-container *ngFor="let product of products">
+           <div class="col-lg-4 col-md-4 col-sm-6 mb-4" *ngIf="isProductAvailable(product)">
+               <div class="card text-center card-custom" (click)="seeDetail(product.id)">
+                   <img src="{{product.image}}" class="card-img-top" style="height: 20rem; object-fit: cover;" alt="Producto 2">
+                   <div class="card-body" style="background-color: var(--white);">
+                       <h5 class="card-title">{{product.name}}</h5>
+                       <a  class="btn btn-primary btn-custom"   (click)="addProductToCart($event, product.id)"
+                       > <i class="bi bi-cart-plus"></i>
+                           
+                           ${{product.price}}</a>
+                   </div>
+               </div>
+           </div>
+       </ng-container>
+    </div>
+</div>
